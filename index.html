@@ -2,669 +2,611 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feliz 20, Luis</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz 20, Luis</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      padding: 24px 14px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #17152d, #30204a, #572b54);
-      color: #fff;
-      font-family: Georgia, "Times New Roman", serif;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 20px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:
+    radial-gradient(circle at 15% 20%, #68418d, transparent 35%),
+    radial-gradient(circle at 85% 80%, #713d78, transparent 35%),
+    linear-gradient(135deg, #17152d, #30204a, #572b54);
+  color: white;
+  font-family: Georgia, "Times New Roman", serif;
+}
 
-    .container {
-      width: 100%;
-      max-width: 520px;
-      min-height: 560px;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 22px;
-      background: rgba(17, 14, 31, .82);
-      box-shadow: 0 18px 55px rgba(0,0,0,.38);
-    }
+.container {
+  width: 100%;
+  max-width: 520px;
+  min-height: 560px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid rgba(255,217,138,.5);
+  border-radius: 22px;
+  background: rgba(17,14,31,.92);
+  box-shadow: 0 0 25px rgba(200,140,255,.3),
+              0 18px 55px rgba(0,0,0,.38);
+}
 
-    .page {
-      display: none;
-      min-height: 560px;
-      padding: 30px 22px;
-      text-align: center;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 18px;
-      animation: appear .45s ease;
-    }
+.container::before {
+  content: "✦     ✧      ·      ✦      ✧";
+  position: absolute;
+  top: 65px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #ffe4a3;
+  font-size: 19px;
+  letter-spacing: 12px;
+  opacity: .5;
+  pointer-events: none;
+  z-index: 2;
+  animation: sparkle 2.5s infinite alternate;
+}
 
-    .page.active {
-      display: flex;
-    }
+@keyframes sparkle {
+  from { opacity: .15; }
+  to { opacity: .75; }
+}
 
-    @keyframes appear {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+.page {
+  display: none;
+  min-height: 560px;
+  padding: 85px 22px 30px;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  animation: appear .45s ease;
+  overflow-y: auto;
+}
 
-    h1, h2 {
-      margin: 0;
-      color: #ffd98a;
-    }
+.page.active {
+  display: flex;
+}
 
-    h1 {
-      font-size: clamp(2rem, 8vw, 2.8rem);
-    }
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    h2 {
-      font-size: clamp(1.55rem, 6vw, 2rem);
-    }
+h1, h2 {
+  margin: 0 0 12px;
+  color: #ffd98a;
+}
 
-    p {
-      line-height: 1.6;
-      margin: 0;
-      font-size: 1.05rem;
-    }
+h1 {
+  font-size: clamp(2rem, 8vw, 2.8rem);
+}
 
-    .content-box {
-      width: 100%;
-      padding: 22px 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.12);
-    }
+h2 {
+  font-size: clamp(1.55rem, 6vw, 2rem);
+}
 
-    .content-box img {
-      display: block;
-      max-width: 100%;
-      max-height: 260px;
-      object-fit: contain;
-      margin: 0 auto 14px;
-      border-radius: 12px;
-    }
+p {
+  line-height: 1.6;
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+}
 
-    .buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      width: 100%;
-    }
+.content-box {
+  width: 100%;
+  padding: 22px 18px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.16);
+  box-shadow: 0 8px 25px rgba(0,0,0,.18);
+}
 
-    button {
-      border: 0;
-      border-radius: 999px;
-      padding: 12px 21px;
-      background: #f2c879;
-      color: #2b1b32;
-      font-weight: bold;
-      font-size: .98rem;
-      cursor: pointer;
-      transition: transform .18s, filter .18s;
-    }
+.content-box img {
+  display: block;
+  width: 100%;
+  max-height: 350px;
+  object-fit: contain;
+  margin: 0 auto 16px;
+  border-radius: 14px;
+}
 
-    button:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.08);
-    }
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
 
-    button.secondary {
-      background: rgba(255,255,255,.14);
-      color: white;
-      border: 1px solid rgba(255,255,255,.24);
-    }
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 21px;
+  background: linear-gradient(135deg,#f2c879,#e6a94f);
+  color: #2b1b32;
+  font-weight: bold;
+  font-size: .98rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(242,200,121,.2);
+  transition: transform .18s;
+}
 
-    .music-button {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      z-index: 5;
-      padding: 9px 13px;
-      font-size: .82rem;
-    }
+button:active {
+  transform: scale(.96);
+}
 
-    .placeholder {
-      width: 100%;
-      min-height: 150px;
-      display: grid;
-      place-items: center;
-      padding: 18px;
-      border: 2px dashed rgba(255,217,138,.65);
-      border-radius: 16px;
-      color: #f4dcae;
-      background: rgba(255,255,255,.04);
-    }
+button.secondary {
+  background: rgba(255,255,255,.14);
+  color: white;
+  border: 1px solid rgba(255,255,255,.24);
+}
 
-    .placeholder small {
-      display: block;
-      opacity: .8;
-      margin-top: 7px;
-    }
+.music-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 5;
+  padding: 9px 13px;
+  font-size: .82rem;
+}
 
-    /* Torta y velitas */
+/* PORTADA GRANDE */
 
-    .cake-area {
-      width: 100%;
-      min-height: 280px;
-      display: flex;
-      justify-content: center;
-      align-items: end;
-      padding: 22px 8px 10px;
-      cursor: pointer;
-      user-select: none;
-      outline: none;
-    }
+#page1 .content-box img {
+  max-height: 420px;
+  width: 100%;
+  object-fit: cover;
+}
 
-    .cake {
-      position: relative;
-      width: 230px;
-      height: 145px;
-      margin-bottom: 20px;
-      border-radius: 14px 14px 22px 22px;
-      background: linear-gradient(#f7c9d8 0 28%, #d875a1 28% 100%);
-      box-shadow:
-        inset 0 -9px 0 rgba(111,35,79,.18),
-        0 15px 25px rgba(0,0,0,.25);
-    }
+/* IMAGEN YE SHUNGUANG */
 
-    .cake::before {
-      content: "";
-      position: absolute;
-      left: -7px;
-      right: -7px;
-      top: -13px;
-      height: 32px;
-      border-radius: 50%;
-      background: #ffe8ef;
-      border-bottom: 5px solid #edabc2;
-    }
+#pageSi .content-box img {
+  max-height: 430px;
+  object-fit: contain;
+}
 
-    .cake::after {
-      content: "✦  ✦  ✦";
-      position: absolute;
-      width: 100%;
-      bottom: 28px;
-      left: 0;
-      color: #fff0b8;
-      font-size: 22px;
-      letter-spacing: 8px;
-    }
+/* IMAGEN HELADO */
 
-    .candles {
-      position: absolute;
-      z-index: 2;
-      left: 0;
-      right: 0;
-      top: -72px;
-      display: flex;
-      justify-content: center;
-      gap: 28px;
-    }
+#pageHelado .content-box img {
+  max-height: 430px;
+  object-fit: contain;
+}
 
-    .candle {
-      position: relative;
-      width: 13px;
-      height: 60px;
-      border-radius: 4px 4px 2px 2px;
-      background: repeating-linear-gradient(
-        135deg,
-        #fff 0 7px,
-        #e8a7bd 7px 13px
-      );
-      box-shadow: 0 0 4px rgba(0,0,0,.2);
-    }
+.silver-text {
+  color: #f5d9ff;
+  font-size: 1.15rem;
+  font-weight: bold;
+  margin-top: 12px;
+  text-shadow: 0 0 12px rgba(225,180,255,.6);
+}
 
-    .candle::after {
-      content: "";
-      position: absolute;
-      width: 2px;
-      height: 9px;
-      left: 5.5px;
-      top: -8px;
-      background: #35252b;
-    }
+/* PERRITO GRANDE */
 
-    .flame {
-      position: absolute;
-      width: 15px;
-      height: 23px;
-      left: -1px;
-      top: -29px;
-      border-radius: 50% 50% 45% 45%;
-      background: radial-gradient(
-        ellipse at 50% 70%,
-        #fff9bb 0 18%,
-        #ffd34f 38%,
-        #ff8a32 72%
-      );
-      transform-origin: 50% 100%;
-      filter: drop-shadow(0 0 8px #ffb347);
-      animation: flicker .55s infinite alternate ease-in-out;
-    }
+#pageNo .content-box img {
+  max-height: 460px;
+  width: 100%;
+  object-fit: contain;
+}
 
-    .candle:nth-child(2) .flame {
-      animation-delay: .18s;
-    }
+/* PÁGINA DEL APORTE */
 
-    .candle:nth-child(3) .flame {
-      animation-delay: .32s;
-    }
+.placeholder {
+  width: 100%;
+  min-height: 150px;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  border: 2px dashed rgba(255,217,138,.65);
+  border-radius: 16px;
+  color: #f4dcae;
+  background: rgba(255,255,255,.04);
+}
 
-    @keyframes flicker {
-      from {
-        transform: rotate(-5deg) scale(.94);
-      }
-      to {
-        transform: rotate(5deg) scale(1.08);
-      }
-    }
+/* TORTA */
 
-    .cake-area.blown .flame {
-      animation: extinguish .45s forwards;
-    }
+.cake-area {
+  width: 100%;
+  min-height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  padding: 22px 8px 10px;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+}
 
-    @keyframes extinguish {
-      0% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      55% {
-        opacity: .65;
-        transform: translateY(-8px) scale(.7);
-      }
-      100% {
-        opacity: 0;
-        transform: translateY(-17px) scale(.1);
-      }
-    }
+.cake {
+  position: relative;
+  width: 230px;
+  height: 145px;
+  margin-bottom: 20px;
+  border-radius: 14px 14px 22px 22px;
+  background: linear-gradient(#f7c9d8 0 28%, #d875a1 28% 100%);
+  box-shadow: inset 0 -9px 0 rgba(111,35,79,.18),
+              0 15px 25px rgba(0,0,0,.25);
+}
 
-    .hint {
-      color: #f7dca8;
-      font-size: .95rem;
-    }
+.cake::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  right: -7px;
+  top: -13px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffe8ef;
+  border-bottom: 5px solid #edabc2;
+}
 
-    #finalMessage {
-      display: none;
-    }
+.cake::after {
+  content: "✦  ✦  ✦";
+  position: absolute;
+  width: 100%;
+  bottom: 28px;
+  left: 0;
+  color: #fff0b8;
+  font-size: 22px;
+  letter-spacing: 8px;
+}
 
-    #finalMessage.show {
-      display: block;
-      animation: appear .6s ease;
-    }
+.candles {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: -72px;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+}
 
-    .final-image {
-      width: 95px !important;
-      height: 95px !important;
-      object-fit: cover !important;
-      border-radius: 50% !important;
-      border: 3px solid #ffd98a;
-      margin: 0 auto 14px !important;
-    }
+.candle {
+  position: relative;
+  width: 13px;
+  height: 60px;
+  border-radius: 4px;
+  background: repeating-linear-gradient(
+    135deg,
+    #fff 0 7px,
+    #e8a7bd 7px 13px
+  );
+}
 
-    @media (max-width: 380px) {
-      .page {
-        padding: 28px 15px;
-      }
+.candle::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 9px;
+  left: 5.5px;
+  top: -8px;
+  background: #35252b;
+}
 
-      .cake {
-        transform: scale(.88);
-      }
-    }
-  </style>
+.flame {
+  position: absolute;
+  width: 15px;
+  height: 23px;
+  left: -1px;
+  top: -29px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 50% 70%,
+    #fff9bb 0 18%,
+    #ffd34f 38%,
+    #ff8a32 72%
+  );
+  transform-origin: 50% 100%;
+  filter: drop-shadow(0 0 8px #ffb347);
+  animation: flicker .55s infinite alternate ease-in-out;
+}
+
+.candle:nth-child(2) .flame {
+  animation-delay: .18s;
+}
+
+.candle:nth-child(3) .flame {
+  animation-delay: .32s;
+}
+
+@keyframes flicker {
+  from { transform: rotate(-5deg) scale(.94); }
+  to { transform: rotate(5deg) scale(1.08); }
+}
+
+.cake-area.blown .flame {
+  animation: extinguish .45s forwards;
+}
+
+@keyframes extinguish {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  55% {
+    opacity: .65;
+    transform: translateY(-8px) scale(.7);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-17px) scale(.1);
+  }
+}
+
+.hint {
+  color: #f7dca8;
+  font-size: .95rem;
+}
+
+/* MENSAJE FINAL */
+
+#finalMessage {
+  display: none;
+}
+
+#finalMessage.show {
+  display: block;
+  animation: appear .6s ease;
+}
+
+.final-image {
+  width: 95px !important;
+  height: 95px !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+  border: 3px solid #ffd98a;
+  margin: 0 auto 14px !important;
+}
+
+@media (max-width: 380px) {
+  .page {
+    padding: 80px 15px 25px;
+  }
+
+  #page1 .content-box img {
+    max-height: 320px;
+  }
+
+  #pageSi .content-box img,
+  #pageHelado .content-box img {
+    max-height: 330px;
+  }
+
+  #pageNo .content-box img {
+    max-height: 360px;
+  }
+}
+</style>
 </head>
 
 <body>
+<main class="container">
 
-  <main class="container">
+<button class="music-button secondary"
+id="musicButton" onclick="toggleMusic()">
+♫ Música
+</button>
 
-    <!-- Música -->
-    <button
-      class="music-button secondary"
-      id="musicButton"
-      onclick="toggleMusic()">
-      ♫ Música
+<audio id="music" src="musica.mp3" loop></audio>
+
+<!-- PORTADA -->
+<section class="page active" id="page1">
+  <div class="content-box">
+    <img src="portada.jpg" alt="Portada">
+    <h1>Hola Luis</h1>
+    <p>
+      Venimos a desearte un feliz cumpleaños.
+      Ya 20 años… eres todo un ídolo, amigo mío.
+    </p>
+    <p>
+      Eres un gran amigo y una gran persona.
+      Me alegro mucho de haberte conocido.
+      Eres alguien que aprecio mucho tener en mi vida.
+    </p>
+  </div>
+  <button onclick="goTo('page2')">Continuar</button>
+</section>
+
+<!-- PREGUNTA -->
+<section class="page" id="page2">
+  <div class="content-box">
+    <h2>¿Te está gustando tu regalo?</h2>
+    <p>Elegí con cuidado… 👀</p>
+  </div>
+  <div class="buttons">
+    <button onclick="goTo('pageSi')">Sí</button>
+    <button class="secondary"
+    onclick="goTo('pageNo')">No</button>
+  </div>
+</section>
+
+<!-- SÍ -->
+<section class="page" id="pageSi">
+  <div class="content-box">
+    <img src="si.jpg" alt="Ye Shunguang">
+    <h2>¡Me alegro!</h2>
+    <p>Toma una Ye Shunguang.</p>
+  </div>
+  <div class="buttons">
+    <button onclick="goTo('pageHelado')">
+      Ver otra
     </button>
+    <button class="secondary"
+    onclick="goTo('page2')">
+      Volver
+    </button>
+    <button onclick="goTo('pageAporte')">
+      Continuar
+    </button>
+  </div>
+</section>
 
-    <audio id="music" src="musica.mp3" loop></audio>
+<!-- HELADO -->
+<section class="page" id="pageHelado">
+  <div class="content-box">
+    <img src="helado.jpg" alt="Helado">
+    <p class="silver-text">
+      Y toma también esta Saber ,
+      porque te la mereces.
+    </p>
+  </div>
+  <button onclick="goTo('pageSi')">Volver</button>
+</section>
 
-    <!-- PÁGINA 1: PORTADA -->
-    <section class="page active" id="page1">
+<!-- NO -->
+<section class="page" id="pageNo">
+  <div class="content-box">
+    <img src="no.gif" alt="Perrito">
+  </div>
+  <button onclick="goTo('page2')">Volver</button>
+</section>
 
-      <div class="content-box">
+<!-- APORTE DEL AMIGO -->
+<section class="page" id="pageAporte">
+  <div class="content-box">
+    <h2>Un detalle especial</h2>
+    <div class="placeholder">
+      Aquí irá la imagen que quieras añadir
+    </div>
+    <p>Aquí irá tu mensaje especial...</p>
+  </div>
+  <div class="buttons">
+    <button onclick="goTo('pageCake')">
+      Continuar
+    </button>
+    <button class="secondary"
+    onclick="goTo('pageSi')">
+      Volver
+    </button>
+  </div>
+</section>
 
-        <img
-          src="portada.jpg"
-          alt="Imagen de portada"
-          onerror="this.style.display='none'">
+<!-- TORTA -->
+<section class="page" id="pageCake">
+  <h2>Un deseo para vos</h2>
+  <p>
+    Antes de seguir, pedí un deseo y tocá la torta
+    para apagar las velitas.
+  </p>
 
-        <h1>Hola Luis</h1>
+  <div class="cake-area"
+  id="cakeArea"
+  role="button"
+  tabindex="0"
+  aria-label="Tocar la torta para apagar las velitas"
+  onclick="blowCandles()"
+  onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();blowCandles();}">
 
-        <p>
-          Venimos a desearte un feliz cumpleaños.
-          Ya 20 años… eres todo un ídolo, amigo mío.
-        </p>
-
-        <p>
-          Eres un gran amigo y una gran persona.
-          Me alegro mucho de haberte conocido.
-          Eres alguien que aprecio mucho tener en mi vida.
-        </p>
-
+    <div class="cake">
+      <div class="candles">
+        <div class="candle"><span class="flame"></span></div>
+        <div class="candle"><span class="flame"></span></div>
+        <div class="candle"><span class="flame"></span></div>
       </div>
-
-      <button onclick="goTo('page2')">
-        Continuar
-      </button>
-
-    </section>
-
-    <!-- PÁGINA 2: PREGUNTA -->
-    <section class="page" id="page2">
-
-      <div class="content-box">
-        <h2>¿Te está gustando tu regalo?</h2>
-        <p>Elegí con cuidado… 👀</p>
-      </div>
-
-      <div class="buttons">
-
-        <button onclick="goTo('pageSi')">
-          Sí
-        </button>
-
-        <button
-          class="secondary"
-          onclick="goTo('pageNo')">
-          No
-        </button>
-
-      </div>
-
-    </section>
-
-    <!-- PÁGINA SÍ -->
-    <section class="page" id="pageSi">
-
-      <div class="content-box">
-
-        <img
-          src="si.jpg"
-          alt="Ye Shunguang"
-          onerror="this.alt='No se encontró si.jpg'">
-
-        <h2>¡Me alegro!</h2>
-        <p>Toma una Ye Shunguang.</p>
-
-      </div>
-
-      <div class="buttons">
-
-        <button onclick="goTo('pageHelado')">
-          Ver otra
-        </button>
-
-        <button
-          class="secondary"
-          onclick="goTo('page2')">
-          Volver
-        </button>
-
-        <button onclick="goTo('pageAporte')">
-          Continuar
-        </button>
-
-      </div>
-
-    </section>
-
-    <!-- PÁGINA HELADO -->
-    <section class="page" id="pageHelado">
-
-      <div class="content-box">
-
-        <img
-          src="helado.jpg"
-          alt="Otra sorpresa"
-          onerror="this.alt='No se encontró helado.jpg'">
-
-      </div>
-
-      <button onclick="goTo('pageSi')">
-        Volver
-      </button>
-
-    </section>
-
-    <!-- PÁGINA NO -->
-    <section class="page" id="pageNo">
-
-      <div class="content-box">
-
-        <img
-          src="no.gif"
-          alt="Perrito"
-          onerror="this.alt='No se encontró no.gif'">
-
-        <h2>¿En serio? :(</h2>
-
-      </div>
-
-      <button onclick="goTo('page2')">
-        Volver
-      </button>
-
-    </section>
-
-    <!-- PÁGINA DEL APORTE -->
-    <section class="page" id="pageAporte">
-
-      <div class="content-box">
-
-        <h2>Un detalle especial</h2>
-
-        <div class="placeholder">
-
-          <div>
-            Aquí irá la imagen que quieras añadir
-
-            <small>
-              Espacio reservado para tu imagen
-            </small>
-          </div>
-
-        </div>
-
-        <p>Aquí irá tu mensaje especial...</p>
-
-      </div>
-
-      <div class="buttons">
-
-        <button onclick="goTo('pageCake')">
-          Continuar
-        </button>
-
-        <button
-          class="secondary"
-          onclick="goTo('pageSi')">
-          Volver
-        </button>
-
-      </div>
-
-    </section>
-
-    <!-- PÁGINA DE LA TORTA -->
-    <section class="page" id="pageCake">
-
-      <h2>Un deseo para vos</h2>
-
-      <p>
-        Antes de seguir, pedí un deseo y tocá la torta
-        para apagar las velitas.
-      </p>
-
-      <div
-        class="cake-area"
-        id="cakeArea"
-        role="button"
-        tabindex="0"
-        aria-label="Tocar la torta para apagar las velitas"
-        onclick="blowCandles()"
-        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();blowCandles();}">
-
-        <div class="cake">
-
-          <div class="candles">
-
-            <div class="candle">
-              <span class="flame"></span>
-            </div>
-
-            <div class="candle">
-              <span class="flame"></span>
-            </div>
-
-            <div class="candle">
-              <span class="flame"></span>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <p class="hint" id="cakeHint">
-        Tocá la torta para apagar las velitas ✨
-      </p>
-
-      <!-- MENSAJE FINAL -->
-      <div class="content-box" id="finalMessage">
-
-        <img
-          class="final-image"
-          src="luis-final.jpg"
-          alt="Luis"
-          onerror="this.style.display='none'">
-
-        <h2>¡Feliz cumpleaños, Luis!</h2>
-
-        <p>
-          Aunque nos separen kilómetros, siempre hay formas
-          de estar presentes. Espero que este detalle te
-          recuerde lo mucho que valés y lo especial que sos.
-        </p>
-
-      </div>
-
-      <button
-        class="secondary"
-        onclick="goTo('pageAporte')">
-        Volver
-      </button>
-
-    </section>
-
-  </main>
-
-  <script>
-
-    // NAVEGACIÓN ENTRE PÁGINAS
-
-    function goTo(id) {
-
-      document.querySelectorAll('.page').forEach(page => {
-        page.classList.remove('active');
-      });
-
-      const destination = document.getElementById(id);
-
-      if (destination) {
-        destination.classList.add('active');
-      }
-
+    </div>
+  </div>
+
+  <p class="hint" id="cakeHint">
+    Tocá la torta para apagar las velitas ✨
+  </p>
+
+  <!-- MENSAJE FINAL -->
+  <div class="content-box" id="finalMessage">
+    <img class="final-image"
+    src="luis-final.jpg" alt="Luis">
+
+    <h2>¡Feliz cumpleaños, Luis!</h2>
+
+    <p>
+      Aunque nos separen kilómetros, siempre hay formas
+      de estar presentes. Espero que este detalle te
+      recuerde lo mucho que valés y lo especial que sos.
+    </p>
+  </div>
+
+  <button class="secondary"
+  onclick="goTo('pageAporte')">
+    Volver
+  </button>
+</section>
+
+</main>
+
+<script>
+// NAVEGACIÓN
+function goTo(id) {
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.remove('active');
+  });
+
+  const destination = document.getElementById(id);
+
+  if (destination) {
+    destination.classList.add('active');
+  }
+}
+
+// MÚSICA
+const music = document.getElementById('music');
+const musicButton = document.getElementById('musicButton');
+
+let playing = false;
+
+async function toggleMusic() {
+  if (!playing) {
+    try {
+      await music.play();
+      playing = true;
+      musicButton.textContent = '♫ Pausar música';
+    } catch (error) {
+      alert(
+        'No se pudo reproducir la música. ' +
+        'Comprueba que musica.mp3 esté en la carpeta.'
+      );
     }
+  } else {
+    music.pause();
+    playing = false;
+    musicButton.textContent = '♫ Música';
+  }
+}
 
+// APAGAR LAS TRES VELITAS
+let candlesBlown = false;
 
-    // CONTROL DE MÚSICA
+function blowCandles() {
+  if (candlesBlown) return;
 
-    const music = document.getElementById('music');
-    const musicButton = document.getElementById('musicButton');
+  candlesBlown = true;
 
-    let playing = false;
+  const cakeArea = document.getElementById('cakeArea');
 
-    async function toggleMusic() {
+  cakeArea.classList.add('blown');
 
-      if (!playing) {
+  document.getElementById('cakeHint').textContent =
+    '✨ ¡Deseo pedido!';
 
-        try {
-
-          await music.play();
-
-          playing = true;
-          musicButton.textContent = '♫ Pausar música';
-
-        } catch (error) {
-
-          musicButton.textContent = 'No se pudo reproducir';
-
-        }
-
-      } else {
-
-        music.pause();
-        playing = false;
-        musicButton.textContent = '♫ Música';
-
-      }
-
-    }
-
-
-    // APAGAR LAS TRES VELITAS
-
-    let candlesBlown = false;
-
-    function blowCandles() {
-
-      if (candlesBlown) return;
-
-      candlesBlown = true;
-
-      const cakeArea = document.getElementById('cakeArea');
-
-      cakeArea.classList.add('blown');
-
-      document.getElementById('cakeHint').textContent =
-        '✨ ¡Deseo pedido!';
-
-      setTimeout(() => {
-
-        document
-          .getElementById('finalMessage')
-          .classList.add('show');
-
-      }, 800);
-
-    }
-
-  </script>
+  setTimeout(() => {
+    document.getElementById('finalMessage')
+      .classList.add('show');
+  }, 800);
+}
+</script>
 
 </body>
 </html>
